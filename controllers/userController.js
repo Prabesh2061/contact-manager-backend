@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
@@ -15,7 +15,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const userAvailable = await User.findOne({ email });
   if (userAvailable) {
     res.status(400);
-    throw new Error('User already exists');
+    throw new Error('User already registered');
   }
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,7 +24,6 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword
   });
-  console.log('User created:', user);
   if (user) {
     res.status(201).json({
       _id: user.id,
