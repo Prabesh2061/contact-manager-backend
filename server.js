@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://contact-manager-backend-lime.vercel.app/',
+  origin: 'https://contact-manager-backend-lime.vercel.app',
   credentials: true
 }));
 app.use("/api/contacts", require('./routes/contactRoutes'));
