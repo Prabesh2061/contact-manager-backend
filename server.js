@@ -10,10 +10,6 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
-}));
-app.use(cors({
   origin: 'https://contact-manager-backend-lime.vercel.app/',
   credentials: true
 }));
@@ -21,6 +17,6 @@ app.use("/api/contacts", require('./routes/contactRoutes'));
 app.use("/api/users", require('./routes/userRoutes'));
 app.use(errorHandler);
 
-app.listen(port, () => {
+app.listen(port, () => {``
   console.log(`Server is running on http://localhost:${port}`);
 });
