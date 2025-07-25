@@ -13,6 +13,10 @@ app.use(cors({
   origin: 'https://contact-manager-backend-lime.vercel.app',
   credentials: true
 }));
+app.use(cors({
+  origin: 'https://contact-manager-backend-lime.vercel.app/dashboard',
+  credentials: true
+}));
 app.use("/api/contacts", require('./routes/contactRoutes'));
 app.use("/api/users", require('./routes/userRoutes'));
 app.use(errorHandler);
